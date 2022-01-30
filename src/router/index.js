@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import homePage from '@/pages/homePage'
 import loginPage from '@/pages/loginPage'
+import register from '@/pages/register'
 import indentPage from '@/pages/indentPage'
 import shopPage from '@/pages/shopPage'
 import listPage2 from '@/pages/listPage2'
@@ -29,6 +30,10 @@ export default new Router({
       path:'/loginPage',
       name:'loginPage',
       component:loginPage
+    },{
+      path:'/register',
+      name:'register',
+      component:register
     },{
       path:'/indentPage',
       name:'indentPage',
