@@ -1,7 +1,6 @@
 import express from "express";
 import * as user from "../controller/user";
 import * as shop from "../controller/shop";
-
 const router = express.Router();
 
 const list = [
