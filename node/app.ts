@@ -9,7 +9,6 @@ const CORS = cors((req, callback) => {
   callback(null, { origin: true });
 });
 
-
 app.use(CORS);
 
 //解析application/json
