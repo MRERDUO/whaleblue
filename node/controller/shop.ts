@@ -1,13 +1,15 @@
 import { get } from "../util/request";
 
-export async function getHotShopList(req, res) {
+export async function getHotKey(req, res) {
   const resp = await get("/search/queryHotKeyWord.json");
-  res.send({ data: resp.body });
+  const { data } = JSON.parse(resp.body);
+  res.send({ data });
 }
 
 export async function getCategoryList(req, res) {
   const resp = await get("/globalinfo//queryTop.json");
-  res.send({ data: resp.body });
+  const { data } = JSON.parse(resp.body);
+  res.send({ data });
 }
 
 export async function getShopList(req, res) {
