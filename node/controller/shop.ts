@@ -1,14 +1,33 @@
-import path from "path";
-import { readFileSync } from "../util/file";
+import { get } from "../util/request";
 
-export function getList(req, res) {
-  const { id } = req.query;
-  const dirPath = path.resolve(__dirname, "../mock/shop.json");
-  const content = readFileSync(dirPath, { encoding: "utf8" });
-  const hitData = JSON.parse(content)[id];
-  res.send({ data: hitData});
+export async function getHotShopList(req, res) {
+  const resp = await get("/search/queryHotKeyWord.json");
+  res.send({ data: resp.body });
 }
 
-// temp4.map(({name,listPicUrl,scenePicUrl,retailPrice,simpleDesc,counterPrice})=>{
-//     return {name,defaImg:listPicUrl,examImg:scenePicUrl,shopPrice:retailPrice,desc:simpleDesc,counterPrice}
-//     })
+export async function getCategoryList(req, res) {
+  const resp = await get("/globalinfo//queryTop.json");
+  res.send({ data: resp.body });
+}
+
+export async function getShopList(req, res) {
+  const { categoryId = "1005000", subCategoryId = "1008012" } = req.query;
+  const url = `/item/listByCategory.json?subCategoryId=${subCategoryId}&categoryId=${categoryId}`;
+  const resp = await get(url);
+  const {
+    data: { category, itemList },
+    code
+  } = JSON.parse(resp.body);
+  if (code !== "200") return;
+  const list = itemList.map(item => {
+    return {
+      name: item.name,
+      defaImg: item.listPicUrl,
+      examImg: item.scenePicUrl,
+      shopPrice: item.retailPrice,
+      desc: item.simpleDesc,
+      counterPrice: item.counterPrice
+    };
+  });
+  res.send({ data: { category, list } });
+}
