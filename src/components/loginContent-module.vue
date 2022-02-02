@@ -101,9 +101,10 @@
   }
 
   .loginContent-module-content {
+    border-radius: 10px;
+    padding: 30px 0px 30px 0px;
     background-color: #fff;
     width: 400px;
-    height: 300px;
     display: flex;
     flex-direction: column;
     justify-content: center;

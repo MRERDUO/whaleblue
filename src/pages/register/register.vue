@@ -9,7 +9,7 @@
               v-model="phoneValue"
               placeholder="请输入手机号"
               >
-                <img src="../assets/phone.png" class="i-input-img" slot="prepend">
+                <img src="@/assets/phone.png" class="i-input-img" slot="prepend">
             </Input>
 
             <Input
@@ -17,7 +17,7 @@
               v-model="phonePwdValue"
               placeholder="请输入密码"
               >
-                <img src="../assets/pwd.png" class="i-input-img" slot="prepend">
+                <img src="@/assets/pwd.png" class="i-input-img" slot="prepend">
             </Input>
 
             <Input
@@ -25,7 +25,7 @@
               v-model="phonePwdValue2"
               placeholder="请再次输入密码"
               >
-                <img src="../assets/pwd.png" class="i-input-img" slot="prepend">
+                <img src="@/assets/pwd.png" class="i-input-img" slot="prepend">
             </Input>
 
             <Input
@@ -33,7 +33,7 @@
               placeholder="请输入短信验证码"
               v-model="phoneVerificationCodeValue"
               >
-              <button class="login-conent-input-btn" slot="append" @click="getVerificationCode(phone)">获取验证码</button>
+              <button class="login-conent-input-btn" slot="append" @click="getVerificationCode('phone')">获取验证码</button>
             </Input>
 
           </div>
@@ -46,34 +46,35 @@
               v-model="emailValue"
               placeholder="请输入邮箱"
               >
-                <img src="../assets/user.png" class="i-input-img" slot="prepend">
+                <img src="@/assets/user.png" class="i-input-img" slot="prepend">
             </Input>
             <Input
               type="password"
               v-model="emailPwdValue"
               placeholder="请输入密码"
               >
-                <img src="../assets/pwd.png" class="i-input-img" slot="prepend">
+                <img src="@/assets/pwd.png" class="i-input-img" slot="prepend">
             </Input>
             <Input
               type="password"
               v-model="emailPwdValue2"
               placeholder="请再次输入密码"
               >
-                <img src="../assets/pwd.png" class="i-input-img" slot="prepend">
+                <img src="@/assets/pwd.png" class="i-input-img" slot="prepend">
             </Input>
             <Input
               type="text"
               placeholder="请输入验证码"
               v-model="emailVerificationCodeValue"
               >
-              <button class="login-conent-input-btn" slot="append" @click="getVerificationCode(email)">获取验证码</button>
+              <button class="login-conent-input-btn" slot="append" @click="getVerificationCode('email')">获取验证码</button>
             </Input>
           </div>
         </Tab-pane>
       </Tabs>
 
       <Button type="primary" class="register-btn" @click="registerAccount">注册</Button>
+      <Button type="primary" class="register-btn" @click="backLogin">返回登录</Button>
     </div>
   </div>
 </template>
@@ -97,10 +98,13 @@
         registerAccount(){
             console.log('注册')
         },
+        backLogin(){
+          this.$router.push("/loginPage")
+        },
         getVerificationCode(type){
-            if(type==phone){
+            if(type=='phone'){
                 console.log('获取手机验证码')    
-            }else if(type==email) {
+            }else if(type=='email') {
                 console.log('获取邮箱验证码')
             }
         }
@@ -110,7 +114,7 @@
 
 <style scoped>
 .Register {
-  background-image: url("../assets/login-bg.jpeg");
+  background-image: url("../../assets/login-bg.jpeg");
   display: flex;
   height: 600px;
   justify-content: center;
@@ -118,9 +122,11 @@
 }
 
   .loginContent-module-content {
+    border-radius: 10px;
+    padding-top: 30px;
+    padding-bottom: 30px;
     background-color: #fff;
     width: 400px;
-    height: 300px;
     display: flex;
     flex-direction: column;
     justify-content: center;
