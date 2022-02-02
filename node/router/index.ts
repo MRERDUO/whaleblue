@@ -8,7 +8,8 @@ const list = [
   { path: "/user/register", type: "post", controller: user.register },
   { path: "/shop/list", type: "get", controller: shop.getShopList },
   { path: "/shop/hotKey", type: "get", controller: shop.getHotKey },
-  { path: "/shop/category", type: "get", controller: shop.getCategoryList }
+  { path: "/shop/category", type: "get", controller: shop.getCategoryList },
+  { path: "/shop/carousel", type: "get", controller: shop.getShopCarousel },
 ];
 
 list.forEach(({ path, type, controller }) => router[type](path, controller));

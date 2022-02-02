@@ -33,10 +33,10 @@
     <!--悬浮箭头-->
     <div class="arrows">
       <div class="arrows-left" @click="handleSwitchLeft">
-        <img class="i-arrows" src="../assets/arrows_left.png" >
+        <img class="i-arrows" src="@/assets/arrows_left.png" >
       </div>
       <div class="arrows-right" @click="handleSwitchRight">
-        <img class="i-arrows" src="../assets/arrows_right.png" >
+        <img class="i-arrows" src="@/assets/arrows_right.png" >
       </div>
     </div>
   </div>

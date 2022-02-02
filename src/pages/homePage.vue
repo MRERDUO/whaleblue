@@ -15,7 +15,7 @@ import headerModule from "@/components/headerModule";
 import footerModule from "@/components/footerModule";
 import carouselModule from "@/components/carouselModule";
 import contentModule from "@/components/contentModule";
-import FixedModule from "../components/fixedModule.vue";
+import FixedModule from "./home/component/fixedModule.vue";
 import Carousel from "../components/carousel.vue";
 
 export default {
