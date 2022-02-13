@@ -11,7 +11,38 @@
         </div>
       </div>
     </div>
-    <div class="header-bottom">
+    <div class="header-center">
+      <img
+        class="i-logo"
+        @click="goHomePage"
+        src="@/assets/logo.png"
+        alt="logo"
+      />
+      <div class="header-center-search">
+        <Input
+          search
+          enter-button="搜索"
+          @on-search="searchMethod"
+          placeholder="请输入商品名..."
+        />
+        <div class="header-center-search-antistop">
+          <span v-for="item in antistop" :key="item.id">
+            {{item.keyword}}
+          </span>
+        </div>
+      </div>
+      <Badge :count="count">
+        <Button
+          @click="goShop"
+          type="default"
+          icon="ios-cart-outline"
+          shape="circle"
+        >
+          购物车
+        </Button>
+      </Badge>
+    </div>
+    <!-- <div class="header-bottom">
       <div class="header-bottom-box">
         <img
           class="i-logo"
@@ -144,7 +175,7 @@
           </Dropdown>
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -154,7 +185,11 @@ export default {
   data() {
     return {
       count: 0,
+      antistop: [],
     };
+  },
+  created() {
+    this.getHotKey();
   },
   methods: {
     goLogin() {
@@ -189,14 +224,27 @@ export default {
     },
     goListPage7() {
       this.$router.push("/listPage7");
-    }
+    },
+    searchMethod() {
+      console.log("searchMethod");
+    },
+    getHotKey() {
+      this.axios.get("api/shop/hotKey").then((res) => {
+        this.antistop = res.data.data;
+        console.log("11111", JSON.stringify(this.antistop));
+      });
+    },
   },
 };
 </script>
 
 <style scoped>
-.header-module{
+.header-module {
   background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 .header-top {
@@ -253,8 +301,8 @@ export default {
   margin: 0 auto;
 }
 
-.header-bottom-box>div{
-  display:flex;
+.header-bottom-box > div {
+  display: flex;
 }
 
 .header-bottom-box-left {
@@ -266,7 +314,7 @@ export default {
   width: 150px;
 }
 
-.i-logo:hover{
+.i-logo:hover {
   cursor: pointer;
 }
 
@@ -304,5 +352,38 @@ export default {
 .header-bottomDown-a:hover {
   color: #3399ff;
   border-bottom: 2px solid #3399ff;
+}
+
+.header-center {
+  width: 1000px;
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.header-center-search {
+  width: 500px;
+  margin-left: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.header-center-search-antistop {
+  width: 500px;
+  margin-top: 10px;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.header-center-search-antistop > span {
+  color: #999;
+  margin-left: 10px;
+}
+
+.header-center-search-antistop > span:hover{
+  cursor: pointer;
+  color: #3399ff;
 }
 </style>

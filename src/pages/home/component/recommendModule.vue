@@ -2,7 +2,7 @@
   <div class="recommendModule">
     <div class="content">
       <a @click="goListPage" class="content-recommend">更多推荐 ></a>
-      <Tabs value="name1">
+      <!-- <Tabs value="name1">
         <Tab-pane label="人气推荐" name="name1">
           <div class="tabs-left-bigBox" @click="goDetailPage">
             <img
@@ -225,7 +225,7 @@
             </div>
           </div>
         </Tab-pane>
-      </Tabs>
+      </Tabs> -->
     </div>
   </div>
 </template>
@@ -265,7 +265,23 @@ export default {
       hasError14: false,
     };
   },
+  created() {
+    // this.getHotKey()
+  },
   methods: {
+    getHotKey() {
+      this.axios.get('/api/shop/hotKey').then(res=>{
+        console.log("11111", JSON.stringify(res.data.data))
+      }).then((res)=>{
+        this.axios.get('/api/shop/category').then(res=>{
+          console.log('22222222', res.data.data)
+        }).then(res=>{
+          this.axios.get('/api/shop/list').then(res=>{
+            console.log('3333333', res.data)
+          })
+        })
+      })
+    },
     mouseOver() {
       this.isActive = true;
       this.hasError = false;

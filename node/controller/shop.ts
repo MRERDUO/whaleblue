@@ -4,7 +4,10 @@ import { readFileSync } from "../util/file";
 
 export async function getHotKey(req, res) {
   const resp = await get("/search/queryHotKeyWord.json");
-  const { data } = JSON.parse(resp.body);
+  let { data } = JSON.parse(resp.body);
+  data.map((currentValue,index)=>{
+    currentValue.id = index + 1
+  })
   res.send({ data });
 }
 
