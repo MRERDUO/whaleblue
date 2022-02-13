@@ -1,4 +1,4 @@
-import * as fs from "fs";
+import fs from "fs";
 
 export function writeFiletoAdd(filePath, data = {}, options?: any) {
   options || (options = { type: "add" }); // options.type : force | add

@@ -1,4 +1,4 @@
-import * as path from 'path'
+import path from 'path'
 import { writeFiletoAdd, readFileSync } from '../util/file'
 
 const dir = path.resolve(__dirname, '../mock/user.json')

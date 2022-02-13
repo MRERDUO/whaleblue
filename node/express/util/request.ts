@@ -1,4 +1,4 @@
-import * as request from "request";
+import request from "request";
 
 const host = "https://you.163.com/xhr";
 

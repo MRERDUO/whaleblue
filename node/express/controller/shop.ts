@@ -1,4 +1,4 @@
-import * as path from 'path'
+import path from 'path'
 import { get } from '../util/request'
 import { readFileSync } from '../util/file'
 
