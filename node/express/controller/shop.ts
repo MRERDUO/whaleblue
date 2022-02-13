@@ -1,6 +1,6 @@
 import path from 'path'
-import { get } from '../util/request'
-import { readFileSync } from '../util/file'
+import { get } from '../../util/request'
+import { readFileSync } from '../../util/file'
 
 export async function getHotKey(req, res) {
   const resp = await get('/search/queryHotKeyWord.json')
@@ -39,7 +39,7 @@ export async function getShopList(req, res) {
   res.send({ data: { category, list } })
 }
 
-const dir = path.resolve(__dirname, '../mock/carousel.json')
+const dir = path.resolve(__dirname, '../../mock/carousel.json')
 
 export async function getShopCarousel(req, res) {
   const carsouselList = readFileSync(dir)

@@ -1,7 +1,7 @@
 import path from 'path'
-import { writeFiletoAdd, readFileSync } from '../util/file'
+import { writeFiletoAdd, readFileSync } from '../../util/file'
 
-const dir = path.resolve(__dirname, '../mock/user.json')
+const dir = path.resolve(__dirname, '../../mock/user.json')
 
 export function login(req, res) {
   const { account, password } = req.body
